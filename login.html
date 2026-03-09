@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InternSphere • Access</title>
+  <link rel="stylesheet" href="css/login.css" />
+  <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.1.20/dist/lenis.css"
+    />
+
+    <!-- AOS cdn -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+     
+
+    
+
+       <!-- AOS cdn -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+
+   <script>
+      // Initialize Lenis
+      const lenis = new Lenis({
+        duration: 2, // Smooth scrolling duration
+        easing: (t) => 1 - Math.pow(1 - t, 4), // Ease-out effect
+        smooth: true,
+        smoothTouch: true, // Enable smooth scrolling for touch devices
+        touchMultiplier: 2,
+        infinite: false,
+      });
+
+      // Animation loop
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+    </script>
+</head>
+
+<body>
+  <main class="page">
+
+    <!-- ===== LEFT / HERO ===== -->
+    <section class="hero">
+      <header class="topbar">
+        <div class="brand">
+         
+        </div>
+
+      
+      </header>
+
+      <div class="hero-body">
+        <h1 class="headline">
+        
+          <span class="rotator" aria-live="polite">
+            <span id="rotatingWord" class="word">find internships</span>
+            <span class="pulse-dot" aria-hidden="true"></span>
+          </span>
+        </h1>
+
+        <p class="subhead">
+          Choose your role, log in, and start managing tasks inside the Virtual Workroom.
+        </p>
+</div>
+
+
+      <div class="hero-glow g1" aria-hidden="true"></div>
+      <div class="hero-glow g2" aria-hidden="true"></div>
+    </section>
+
+    <!-- ===== RIGHT / AUTH ===== -->
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title">
+          <h2 id="panelTitle">Login • Student</h2>
+          <p id="panelDesc">Access your internship dashboard.</p>
+        </div>
+      </div>
+
+      <!-- Role tabs -->
+      <div class="role-tabs" role="tablist" aria-label="Choose role">
+        <button class="role-tab is-active" data-role="student" role="tab" aria-selected="true">Student</button>
+        <button class="role-tab" data-role="company" role="tab" aria-selected="false">Company</button>
+        <button class="role-tab" data-role="admin" role="tab" aria-selected="false">Admin</button>
+      </div>
+
+      <!-- Login / signup -->
+      <div class="mode-switch" aria-label="Login or Sign up">
+        <button class="mode-btn is-active" data-mode="login" aria-pressed="true">Login</button>
+        <button class="mode-btn" data-mode="signup" aria-pressed="false">Sign up</button>
+      </div>
+
+      <div class="oauth">
+        <button class="btn btn-soft" type="button" id="googleBtn">
+          <span class="badge" aria-hidden="true">G</span>
+          Continue with Google
+        </button>
+      </div>
+
+      <div class="divider"><span>or</span></div>
+
+      <form class="form" id="authForm" autocomplete="on">
+        <label class="field">
+          <span>Email</span>
+          <input type="email" id="email" placeholder="you@example.com" required />
+        </label>
+
+        <label class="field">
+          <span>Password</span>
+          <input type="password" id="password" placeholder="••••••••" required />
+        </label>
+
+        <!-- Only for company signup -->
+        <label class="field is-hidden" id="companyNameField">
+          <span>Company Name</span>
+          <input type="text" id="companyName" placeholder="Your company name" />
+        </label>
+
+        <div class="row">
+          <label class="check">
+            <input type="checkbox" id="remember" />
+            <span>Remember me</span>
+          </label>
+
+          <button class="link-btn" type="button" id="forgotBtn">Forgot password?</button>
+        </div>
+
+        <button class="btn btn-primary" type="submit" id="submitBtn">Login</button>
+
+        <div class="alt-actions">
+          <button class="btn btn-ghost" type="button" id="switchBtn">Create an account</button>
+        </div>
+
+        <p class="footnote">
+          Admin access is restricted. Company accounts are verified.
+        </p>
+      </form>
+    </section>
+
+  </main>
+
+<script type="module" src="js/login.js"></script>
+</body>
+</html>

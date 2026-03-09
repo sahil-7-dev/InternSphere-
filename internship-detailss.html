@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Careers - Job Detail</title>
+    <link rel="stylesheet" href="css/internship-details.css" />
+    <!-- lenis cdn -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.1.20/dist/lenis.css"
+    />
+
+    <!-- AOS cdn -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+
+    <script>
+      // Initialize Lenis
+      const lenis = new Lenis({
+        duration: 2, // Smooth scrolling duration
+        easing: (t) => 1 - Math.pow(1 - t, 4), // Ease-out effect
+        smooth: true,
+        smoothTouch: true, // Enable smooth scrolling for touch devices
+        touchMultiplier: 2,
+        infinite: false,
+      });
+
+      // Animation loop
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+    </script>
+  </head>
+
+  <body>
+    <!-- ===== TOP / HEADER ===== -->
+    <header class="site-header">
+
+
+      <div class="nav-bar">
+        <div class="container nav-inner">
+          <a class="brand" href="#">
+            <span class="brand-word"> <img src="assets/images/Internsphere logo.png" alt="" width="44px" height="44px"> InternSphere</span>
+          </a>
+
+          <nav class="nav">
+            <a class="nav-link" href="#"
+              >Services <span class="caret">▾</span></a
+            >
+            <a class="nav-link" href="#"
+              >Products <span class="caret">▾</span></a
+            >
+            <a class="nav-link" href="#"
+              >Solutions <span class="caret">▾</span></a
+            >
+            <a class="nav-link" href="#"
+              >Company <span class="caret">▾</span></a
+            >
+            <a class="nav-link" href="#">Career <span class="caret">▾</span></a>
+            <a class="nav-link" href="#">Blog</a>
+          </nav>
+
+          <div class="nav-actions">
+            <button class="btn btn-primary">Find a role</button>
+            <button class="hamburger" aria-label="Open menu">☰</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page">
+      <!-- ===== HERO ===== -->
+      <section class="hero"
+      
+     
+                    
+      >
+        <div class="hero-container hero-grid">
+          <div class="hero-left">
+            <div class="breadcrumb">
+              <a href="#">Career</a><span>/</span>
+              <a href="#">Design department</a><span>/</span>
+              <span class="current">Senior Product Designer</span>
+            </div>
+
+            <h1 class="hero-title">Senior Product Designer</h1>
+            <p class="hero-subtitle">
+              We are looking for a talented & creative artist with an advanced
+              level of English to design UI/UX interfaces for web and mobile
+              apps.
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn btn-primary">Apply now</button>
+              <button class="btn btn-ghost">Recommend</button>
+            </div>
+
+            <div class="hero-meta">
+              <div class="meta-item">
+                <span class="meta-ico"><img src="assets/images/icons8-dashboard-100.png" alt="designicon" width="38px" height="38px"></span>
+                <div>
+                  <div class="meta-label">Department</div>
+                  <div class="meta-value">Design</div>
+                </div>
+              </div>
+
+              <div class="meta-item">
+                <span class="meta-ico"><img src="assets/images/icons8-location-50.png" alt="" width="38px" height="auto"></span>
+                <div>
+                  <div class="meta-label">Location</div>
+                  <div class="meta-value">German, Munich</div>
+                </div>
+              </div>
+
+              <div class="meta-item">
+                <span class="meta-ico"><img src="assets/images/icons8-time-48.png" alt="" width="38px" height="auto"></span>
+                <div>
+                  <div class="meta-label">Salary</div>
+                  <div class="meta-value">$115,000 – $125,000 + Benefits</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-image" aria-label="Company photo placeholder">
+              <div class="hero-image-inner">
+                <div class="img-tag"><img src="assets/images/campaign-creators-qCi_MzVODoU-unsplash.jpg" alt="" width="100%" height="auto"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== MIDDLE ===== -->
+      <section class="content-wrap">
+        <div class="tabs">
+          <button class="tab active" type="button">Role details</button>
+          <button class="tab" type="button">Our mission</button>
+          <button class="tab" type="button">Office</button>
+          <button class="tab" type="button">Stobox Culture</button>
+        </div>
+        <div class="container content-grid">
+          <div class="content-left">
+            <article class="card card-pad">
+              <hr class="sep" />
+              <div class="mini-grid">
+                <div class="mini-item">
+                  <div>
+                    POSITION
+                  </div>
+                  <div
+                    class="mini-value">
+                    Senior Product Designer
+                  </div>
+                </div>
+                <div class="mini-item">
+                  <div class="mini-label">EMPLOYMENT</div>
+                  <div class="mini-value">In-house or remote</div>
+                </div>
+              </div>
+              <h3 class="h3">Your mission</h3>
+              <p class="p">
+                You’ll be collaborating with other team members in a
+                cross-functional product team, to build spending experiences for
+                personal and business customers.
+              </p>
+
+              <h4 class="h4">Here’s how you’ll be contributing</h4>
+              <ul class="bullets">
+                <li>
+                  You’ll get to know customers, building empathy and a deep
+                  understanding of their needs.
+                </li>
+                <li>
+                  You’ll use Product Design skills to discover, design and
+                  deliver simple experiences users love.
+                </li>
+                <li>
+                  You’ll influence your team, increasing customer-centeredness,
+                  creativity and design quality.
+                </li>
+              </ul>
+
+              <h4 class="h4">About you</h4>
+              <ul class="bullets">
+                <li>
+                  You’ve got a portfolio of well-crafted work that solves real
+                  problems for real people.
+                </li>
+                <li>
+                  You’re a natural collaborator, designing in the open and
+                  leveraging other functions’ expertise.
+                </li>
+                <li>
+                  You practice evidence-based design and can rationalize
+                  decisions clearly and credibly.
+                </li>
+              </ul>
+
+              <div class="info-accordion" data-aos="zoom-in"
+                    data-aos-delay="60"
+                    data-aos-duration="2000"
+                    data-aos-easing="ease">
+        
+              </div>
+            </article>
+          </div>
+
+          <aside class="content-right"
+          
+           data-aos="zoom-in"
+                    data-aos-delay="60"
+                    data-aos-duration="1500"
+          >
+            <div class="apply-card">
+              <h3 class="apply-title">Ready to apply?</h3>
+              <p class="apply-sub">
+                Complete the eligibility checklist now and get started with your
+                online application
+              </p>
+
+              <form class="apply-form">
+                <label class="field">
+                  <span>Name *</span>
+                  <input type="text" />
+                </label>
+
+                <label class="field">
+                  <span>Email *</span>
+                  <input type="email" />
+                </label>
+
+                <label class="field">
+                  <span>Phone *</span>
+                  <input type="tel" />
+                </label>
+
+                <div class="upload">
+                  <div class="upload-top">
+                    <span class="upload-label">Upload CV *</span>
+                  </div>
+                  <div class="upload-box">
+                    <div class="cloud">☁</div>
+                    <div>
+                      <div class="upload-main">Drop files to attach</div>
+                      <div class="upload-sub">Max file upload size 5 Mb</div>
+                    </div>
+                  </div>
+                </div>
+
+                <button class="btn apply-btn" type="button">Apply now</button>
+              </form>
+            </div>
+
+            <div class="side-card">
+              <div class="side-head">
+                <h4>Latest design roles</h4>
+              </div>
+
+              <a class="role-item" href="#">
+                <div class="role-ico">S</div>
+                <div class="role-meta">
+                  <div class="role-title">Senior Design Researcher</div>
+                  <div class="role-sub">London / $85,000</div>
+                </div>
+                <div class="role-arrow">›</div>
+              </a>
+
+              <a class="role-item" href="#">
+                <div class="role-ico">S</div>
+                <div class="role-meta">
+                  <div class="role-title">Content Design Lead — Support</div>
+                  <div class="role-sub">Los Angeles / $120,000 – $130,000</div>
+                </div>
+                <div class="role-arrow">›</div>
+              </a>
+
+              <a class="role-item" href="#">
+                <div class="role-ico">S</div>
+                <div class="role-meta">
+                  <div class="role-title">Design Lead</div>
+                  <div class="role-sub">Munich</div>
+                </div>
+                <div class="role-arrow">›</div>
+              </a>
+
+              <a class="view-all" href="#">View all →</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER (outside main is cleaner) ===== -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand"><img src="assets/images/Internsphere logo.png" alt="" width="44px" height="auto"> InternSphere</div>
+          <p class="footer-desc">
+            Building digital financial infrastructure and empowering businesses
+            with innovative technology solutions.
+          </p>
+
+          <div class="socials">
+            <a href="#">🌐</a>
+            <a href="#">🐦</a>
+            <a href="#">💼</a>
+            <a href="#">📸</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About us</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+          <a href="#">Blog</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#">Tokenization</a>
+          <a href="#">Consulting</a>
+          <a href="#">Compliance</a>
+          <a href="#">Investment</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Stay updated</h4>
+          <p class="newsletter-text">
+            Subscribe to our newsletter to get the latest job openings and
+            updates.
+          </p>
+
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" />
+            <button type="button">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container footer-bottom-inner">
+          <span>© 2026 InternSphere. All rights reserved.</span>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookies</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="js/internship-details.js"></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        // Global settings:
+        disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+        startEvent: "DOMContentLoaded", // name of the event dispatched on the document, that AOS should initialize on
+        initClassName: "aos-init", // class applied after initialization
+        animatedClassName: "aos-animate", // class applied on animation
+        useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+        disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+        debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+        throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+
+        // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+        offset: 120, // offset (in px) from the original trigger point
+        delay: 0, // values from 0 to 3000, with step 50ms
+        duration: 400, // values from 0 to 3000, with step 50ms
+        easing: "ease", // default easing for AOS animations
+        once: true, // whether animation should happen only once - while scrolling down
+        mirror: false, // whether elements should animate out while scrolling past them
+        anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
+      });
+    </script>
+  </body>
+</html>

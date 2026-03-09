@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Virtual Workroom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/virtualworkroom.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="topbar">
+  <h1>Virtual Workroom</h1>
+  <div class="project-info">
+    <span class="project-label">Project:</span><span class="project-name">InternSphere</span>
+    <button class="submit-btn">Submit Task</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- LEFT PANEL -->
+  <aside class="task-list">
+    <h3>Task List</h3>
+    <ul>
+      <li class="completed">
+        <span class="check">✔</span> Task 1: Market Research <span>(Completed)</span>
+      </li>
+    
+      <li class="active">
+        <span class="check">✔</span> Task 2: UI Design <span>(Active)</span>
+      </li>
+    
+      <li>
+        — Task 3: Documentation
+      </li>
+    </ul>
+  </aside>
+
+  <!-- CENTER PANEL -->
+  <main class="workspace">
+
+    <div class="workspace-header">
+      <h3>Workspace</h3>
+    </div>
+    
+    <div class="workspace-title">
+      <h2>Task 2: UI Design</h2>
+    </div>
+    <p class="task-desc">
+      Design a user-friendly interface for our new app. Focus on navigation, layout, and accessibility.
+    </p>
+
+    <div class="editor-toolbar">
+
+      <!-- Text formatting -->
+      <button><i class="fa-solid fa-bold"></i></button>
+      <button><i class="fa-solid fa-italic"></i></button>
+      <button><i class="fa-solid fa-underline"></i></button>
+      <button><i class="fa-solid fa-heading"></i></button>
+    
+      <!-- Lists -->
+      <button><i class="fa-solid fa-list-ul"></i></button>
+      <button><i class="fa-solid fa-list-ol"></i></button>
+    
+      <!-- Alignment -->
+      <button><i class="fa-solid fa-align-left"></i></button>
+      <button><i class="fa-solid fa-align-center"></i></button>
+      <button><i class="fa-solid fa-align-right"></i></button>
+      <button><i class="fa-solid fa-align-justify"></i></button>
+    
+      <!-- Extra useful icons (without image) -->
+      <button><i class="fa-solid fa-link"></i></button>
+      <button><i class="fa-solid fa-rotate-left"></i></button>
+      <button><i class="fa-solid fa-rotate-right"></i></button>
+    
+      <!-- Microphone -->
+      <button><i class="fa-solid fa-microphone"></i></button>
+    
+    </div>
+    <textarea placeholder="Start writing your response here..."></textarea>
+
+    <div class="upload-section">
+      <h4>File Upload</h4>
+    
+      <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+    
+        <input type="file" id="fileInput" hidden>
+    
+        <div class="upload-text">
+          Drag & Drop files here or 
+          <span class="browse">Browse</span>
+        </div>
+    
+      
+        <div class="upload-icon">
+          <svg viewBox="0 0 24 24" class="upload-svg" fill="none">
+            
+            <!-- Arrow shaft -->
+            <path d="M12 16V4"
+              stroke="currentColor"
+              stroke-width="3.5"
+              stroke-linecap="round"/>
+        
+            <!-- Arrow head -->
+            <path d="M7.5 9L12 4L16.5 9"
+              stroke="currentColor"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+        
+            <!-- Bottom tray -->
+            <path d="M4 20H20"
+              stroke="currentColor"
+              stroke-width="3.8"
+              stroke-linecap="round"/>
+              
+          </svg>
+        </div>
+      
+      </div>
+    </div>
+  </main>
+
+    <!-- RIGHT PANEL -->
+    <aside class="ai-mentor">
+    
+      <div class="ai-header">
+        <h3>AI Mentor</h3>
+        <div class="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    
+      <div class="chat-area">
+        <div class="chat-box">
+          Stuck on the UI?<br>
+          Try focusing on user flow first.
+        </div>
+      </div>
+    
+      <div class="chat-input">
+        <input type="text" placeholder="Type a message...">
+        <button>➤</button>
+      </div>
+    
+    </aside>
+
+</div>
+
+<script type="module" src="js/virtualworkroom.js"></script>
+</body>
+</html>

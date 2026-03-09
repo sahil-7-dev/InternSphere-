@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InternSphere — Virtual Internship Portal</title>
+    <meta
+      name="description"
+      content="InternSphere is a modern virtual internship portal to manage applications, tasks, and progress."
+    />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+
+<link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.1.20/dist/lenis.css"
+    />
+
+    <!-- AOS cdn -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+     
+
+    <link rel="stylesheet" href="css/global.css" />
+
+       <!-- AOS cdn -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+
+   <script>
+      // Initialize Lenis
+      const lenis = new Lenis({
+        duration: 2, // Smooth scrolling duration
+        easing: (t) => 1 - Math.pow(1 - t, 4), // Ease-out effect
+        smooth: true,
+        smoothTouch: true, // Enable smooth scrolling for touch devices
+        touchMultiplier: 2,
+        infinite: false,
+      });
+
+      // Animation loop
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+    </script>
+
+  </head>
+
+  <!-- Default theme: dark. Toggle remembers choice. -->
+  <body class="theme-dark">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="container nav-inner">
+        <!-- If your logo image already contains the word "InternSphere", keep data-logo-has-text="true"
+             If your logo is icon-only, change it to "false" (so text shows) -->
+        <a class="brand" href="#hero" aria-label="InternSphere Home" data-logo-has-text="true">
+          <img class="brand-logo" src="assets/images/Internsphere logo.png" alt="InternSphere logo" />Internsphere
+          <span class="brand-name">InternSphere</span>
+        </a>
+
+        <nav class="nav-mid" aria-label="Primary">
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#hero" class="nav-link active">Home</a></li>
+            <li><a href="#features" class="nav-link">Features</a></li>
+            <li><a href="#how" class="nav-link">How it works</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <span class="nav-indicator" aria-hidden="true"></span>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <!-- Theme toggle -->
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-label="Toggle theme"
+            aria-pressed="true"
+            title="Toggle theme"
+          >
+            <span class="toggle-ico" aria-hidden="true">🌙</span>
+            <span class="toggle-label">Dark</span>
+          </button>
+
+          <a class="link-btn" href="#">Log in</a>
+          <a class="btn btn-primary" href="#">Sign up</a>
+
+          <button
+            class="hamburger"
+            id="hamburger"
+            type="button"
+            aria-label="Open menu"
+            aria-controls="navLinks"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="hero" class="hero">
+        <div class="hero-bg" aria-hidden="true">
+          <div class="glow g1"></div>
+          <div class="glow g2"></div>
+          <div class="noise"></div>
+          <div class="grid"></div>
+        </div>
+
+        <div class="container hero-inner">
+          <div class="hero-left">
+            <h1 class="hero-title" </h1> 
+                     Showcase your work like a
+              <span class="grad rotator" data-words='["product.","portfolio.","career.","brand."]'>product.</span>
+              <br />
+              Manage internships like a
+              <span class="grad rotator" data-words='["platform.","workflow.","system.","dashboard."]'>platform.</span>
+            </h1> </h1> 
+
+          
+
+            <p class="hero-sub">
+             InternSphere connects students and companies in one AI-powered platform
+to manage internships, track progress, and showcase real work experience.
+            </p>
+
+            <div class="hero-cta">
+              <a class="btn btn-primary btn-lg" href="#">Get started</a>
+              <a class="btn btn-ghost btn-lg" href="#features">See features</a>
+            </div>
+
+            <div class="hero-badges">
+              <span class="mini-badge">AI Resume Feedback</span>
+              <span class="mini-badge">Workroom Tasks</span>
+              <span class="mini-badge">Progress Timeline</span>
+            </div>
+          </div>
+
+<div class="hero-right">
+            <div class="hero-panel">
+            <!-- HERO MOCKUP: replace your current dummy dashboard mockup with this -->
+<div class="hero-mockup">
+  <div class="mockup-shell">
+    <div class="mockup-top">
+      <div class="mockup-dots">
+        <span></span><span></span><span></span>
+      </div>
+
+<div class="mockup-title">
+  InternSphere — <span class="ai-rotate">AI Mentor</span>
+</div>
+
+      <div class="mockup-live">
+        <span class="live-dot"></span>
+        <span>LIVE</span>
+      </div>
+    </div>
+
+    <div class="mockup-body">
+      <!-- Row 1: Internship -->
+      <div class="mockup-card mockup-card--primary">
+        <div class="card-head">
+          <div class="card-kicker">Active Internship</div>
+          <div class="pill">Week <strong>3</strong> / 8</div>
+        </div>
+
+        <div class="card-title">Front-End Developer</div>
+        <div class="card-sub">ByteLabs • Remote • Mentor-guided</div>
+
+        <div class="progress">
+          <div class="progress-top">
+            <span>Progress</span>
+            <strong>64%</strong>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" style="--p:64;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Two tiles -->
+      <div class="mockup-grid2">
+        <!-- AI Readiness ring -->
+        <div class="mockup-card">
+          <div class="card-kicker">AI Readiness</div>
+
+          <div class="ring">
+            <svg viewBox="0 0 120 120" class="ring-svg" aria-hidden="true">
+              <circle class="ring-bg" cx="60" cy="60" r="46"></circle>
+              <circle class="ring-fg" cx="60" cy="60" r="46" style="--val:78;"></circle>
+            </svg>
+
+            <div class="ring-center">
+              <div class="ring-val">78%</div>
+              <div class="ring-lbl">match</div>
+            </div>
+          </div>
+
+          <div class="mini-row">
+            <span class="mini-tag">ATS</span>
+            <strong>82</strong>
+            <span class="mini-sep">•</span>
+            <span class="mini-tag">Skills</span>
+            <strong>71</strong>
+          </div>
+        </div>
+
+        <!-- Tasks summary -->
+        <div class="mockup-card">
+          <div class="card-kicker">Today</div>
+
+          <div class="stat-stack">
+            <div class="stat">
+              <span class="stat-ico">✔</span>
+              <div class="stat-text">
+                <div class="stat-top"><strong>5</strong> Completed</div>
+                <div class="stat-sub">Task submissions</div>
+              </div>
+            </div>
+
+            <div class="stat">
+              <span class="stat-ico stat-ico--warn">⏳</span>
+              <div class="stat-text">
+                <div class="stat-top"><strong>2</strong> Pending</div>
+                <div class="stat-sub">In review queue</div>
+              </div>
+            </div>
+
+            <div class="stat">
+              <span class="stat-ico stat-ico--info">💬</span>
+              <div class="stat-text">
+                <div class="stat-top"><strong>1</strong> Feedback</div>
+                <div class="stat-sub">Mentor notes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom AI tip strip -->
+      <div class="ai-tip">
+        <span class="ai-chip">AI Insight</span>
+    <span class="ai-text">
+  <span class="ai-dyn ai-dyn--small"
+    data-words="Suggestion: Improve REST APIs + state management.|Tip: Add Git branches + PR workflow.|Insight: Boost ATS score with quantified projects.|Hint: Focus on responsiveness + accessibility."></span>
+</span>
+        <span class="ai-spark" aria-hidden="true">✦</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hero-trustbar">
+  <span class="trust-text">Trusted by teams & students</span>
+
+  <div class="trust-pills">
+    <span>Nova</span>
+    <span>Byte</span>
+    <span>Orbit</span>
+    <span>Zen</span>
+  </div>
+</div>
+      </section>
+
+      <!-- FEATURES -->
+      <section id="features" class="section section-soft">
+        <div class="container">
+          <div class="head">
+            <span class="kicker">FEATURES</span>
+            <h2>Everything you need for a complete virtual internship experience</h2>
+            <p class="muted">
+             AI assistance, real project workflows, and internship management in one platform.
+            </p>
+          </div>
+
+          <div class="grid3"
+          data-aos="fade-up"
+                    data-aos-delay="60"
+                    data-aos-duration="3000"
+                    data-aos-easing="ease"
+          >
+            <article class="card">
+              <div class="card-ico"><img src="assets/images/AI icon.svg" alt=""></div>
+              <h3>AI Resume Analyzer</h3>
+              <p>Score resumes, detect skill gaps, and get improvement suggestions instantly.</p>
+              <ul>
+                <li>ATS score + tips</li>
+                <li>Skill suggestions</li>
+                <li>Role matching</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="card-ico"><img src="assets/images/icons8-dashboards-32.png" alt=""></div>
+              <h3>Smart Dashboard</h3>
+              <p>Track applications, deadlines, and progress without messy spreadsheets.</p>
+              <ul>
+                <li>Application tracking</li>
+                <li>Progress timeline</li>
+                <li>Reminders</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="card-ico"><img src="assets/images/icons8-work-50.png" alt=""></div>
+              <h3>Virtual Workroom</h3>
+              <p>Assign tasks, submit work, and keep feedback organized in one workroom.</p>
+              <ul>
+                <li>Tasks & submissions</li>
+                <li>Feedback loop</li>
+                <li>Milestones</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW -->
+      <section id="how" class="section"
+      >
+        <div class="container">
+          <div class="head" 
+            data-aos="fade-up"
+                    data-aos-delay="60"
+                    data-aos-duration="2000"
+                    data-aos-easing="ease"
+          >
+            <span class="kicker" 
+            >HOW IT WORKS</span>
+            <h2>Simple steps to get started</h2>
+            <p class="muted">No heavy setup — it’s built to be demo-ready.</p>
+          </div>
+
+          <div class="steps"
+              data-aos="zoom-out"
+                    data-aos-delay="60"
+                    data-aos-duration="2000"
+                    data-aos-easing="ease"
+          >
+            <div class="step">
+              <div class="step-num">1</div>
+              <div>
+                <h3>Create an account</h3>
+                <p class="muted">Student or Company — build your profile quickly.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num">2</div>
+              <div>
+                <h3>Apply or post internships</h3>
+                <p class="muted">Students apply. Companies shortlist candidates easily.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-num">3</div>
+              <div>
+                <h3>Track progress in workroom</h3>
+                <p class="muted">Tasks, feedback, milestones — neatly organized.</p>
+              </div>
+            </div>
+          </div>
+
+        
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section id="contact" class="section section-cta"
+        data-aos="fade-up"
+                    data-aos-delay="60"
+                    data-aos-duration="2000"
+                    data-aos-easing="ease"
+      >
+        <div class="container">
+          <div class="cta">
+            <div class="cta-left">
+              <h2>Start your internship journey today</h2>
+              <p class="muted">
+               Discover virtual internships, work on real tasks, and gain industry-ready experience with AI-powered guidance.
+              </p>
+              <div class="hero-cta">
+                <a class="btn btn-primary btn-lg" href="#">Get Started</a>
+                <a class="btn btn-ghost btn-lg" href="#">Learn more</a>
+              </div>
+            </div>
+
+            <div class="cta-right">
+              <div class="cta-card">
+                <b>Includes</b>
+                <ul>
+                  <li>AI resume + skill feedback</li>
+                  <li>Application tracking</li>
+                  <li>Workroom tasks & reviews</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="foot-brand">
+            <img class="brand-logo sm" src="assets/images/Internsphere logo.png" alt="InternSphere logo" />
+            <b>InternSphere</b>
+          </div>
+          <p class="muted">
+            A virtual internship platform designed to connect students and companies seamlessly.
+          </p>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <a href="#hero">Home</a>
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div>
+          <h4>Company</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+          <a href="#">Support</a>
+        </div>
+
+        <div>
+          <h4>Connect</h4>
+          <a href="#">LinkedIn</a>
+          <a href="#">Twitter</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <span>© 2026 InternSphere. All rights reserved.</span>
+        <a href="#hero">Back to top ↑</a>
+      </div>
+    </footer>
+
+   <script type="module" src="js/main.js"></script>
+
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        // Global settings:
+        disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+        startEvent: "DOMContentLoaded", // name of the event dispatched on the document, that AOS should initialize on
+        initClassName: "aos-init", // class applied after initialization
+        animatedClassName: "aos-animate", // class applied on animation
+        useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+        disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+        debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+        throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+
+        // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+        offset: 120, // offset (in px) from the original trigger point
+        delay: 0, // values from 0 to 3000, with step 50ms
+        duration: 400, // values from 0 to 3000, with step 50ms
+        easing: "ease", // default easing for AOS animations
+        once: true, // whether animation should happen only once - while scrolling down
+        mirror: false, // whether elements should animate out while scrolling past them
+        anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
+      });
+    </script>
+
+  </body>
+</html>
