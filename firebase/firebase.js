@@ -10,11 +10,12 @@ const firebaseConfig = {
   projectId: "internsphere-9c869",
   storageBucket: "internsphere-9c869.firebasestorage.app",
   messagingSenderId: "46919610654",
-  appId: "1:46919610654:web:b24a8df1ea62298fa1d90f"
+  appId: "AIzaSyDKnp6JeZyiYsT3MC4T7HV4Z5yXMoR3lPw"
 };
 
 const app = initializeApp(firebaseConfig);
 
 // Firebase services
 export const auth = getAuth(app);
+
 export const db = getFirestore(app);
