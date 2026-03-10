@@ -5,7 +5,7 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-aut
 import { getFirestore } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDOhy3s9QGR2WSTh0ghLQ7OXA7Z36rqr-c",
+  apiKey: "AIzaSyDKnp6JeZyiYsT3MC4T7HV4Z5yXMoR3lPw",
   authDomain: "internsphere-9c869.firebaseapp.com",
   projectId: "internsphere-9c869",
   storageBucket: "internsphere-9c869.firebasestorage.app",
@@ -19,3 +19,4 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 export const db = getFirestore(app);
+
