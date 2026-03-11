@@ -1,18 +1,21 @@
-// js/login.js (COPY-PASTE WHOLE FILE)
-import { setRemember, signupEmail, loginEmail, resetPassword, getUserRole } from "./auth.js";
+import { setRemember, signupEmail, loginEmail, resetPassword, getUserRole, loginWithGoogle } from "./auth.js";
 
 function redirectAfterLogin(fallback = "dashboard.html") {
   const params = new URLSearchParams(window.location.search);
   const next = params.get("next");
+
   if (next) {
     window.location.href = decodeURIComponent(next);
-  } else {
-    window.location.href = fallback;
+    return;
   }
+
+  window.location.href = fallback;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ========= Rotating headline =========
+  // =========================
+  // Rotating headline
+  // =========================
   const wordEl = document.getElementById("rotatingWord");
   const rotator = wordEl?.parentElement;
 
@@ -21,36 +24,50 @@ document.addEventListener("DOMContentLoaded", () => {
     { text: "match skills", c1: "#ec4899", c2: "#22d3ee" },
     { text: "join workrooms", c1: "#7c3aed", c2: "#ec4899" },
     { text: "get AI guidance", c1: "#a3ff78", c2: "#22d3ee" },
-    { text: "InternSphere", c1: "#2a8af1", c2: "#f90505" },
+    { text: "build your future", c1: "#60a5fa", c2: "#ec4899" }
   ];
 
-  let wi = 0;
+  let wordIndex = 0;
+  let wordInterval = null;
 
   function setWord(item) {
     if (!wordEl || !rotator) return;
 
-    try {
-      wordEl.animate(
-        [
-          { opacity: 0, transform: "translateY(10px)", filter: "blur(8px)" },
-          { opacity: 1, transform: "translateY(0px)", filter: "blur(0px)" },
-        ],
-        { duration: 320, easing: "cubic-bezier(.2,.9,.2,1)" }
-      );
-    } catch (_) {}
-
     wordEl.textContent = item.text;
     rotator.style.setProperty("--wcol", item.c1);
     rotator.style.setProperty("--wcol2", item.c2);
+
+    try {
+      wordEl.animate(
+        [
+          { opacity: 0, transform: "translateY(10px)", filter: "blur(6px)" },
+          { opacity: 1, transform: "translateY(0)", filter: "blur(0)" }
+        ],
+        {
+          duration: 320,
+          easing: "cubic-bezier(.2,.9,.2,1)"
+        }
+      );
+    } catch (_) {
+      // Ignore animation support errors
+    }
   }
 
-  setWord(words[wi]);
-  setInterval(() => {
-    wi = (wi + 1) % words.length;
-    setWord(words[wi]);
-  }, 2000);
+  function startRotation() {
+    if (!wordEl) return;
+    setWord(words[wordIndex]);
 
-  // ========= DOM refs =========
+    wordInterval = setInterval(() => {
+      wordIndex = (wordIndex + 1) % words.length;
+      setWord(words[wordIndex]);
+    }, 2200);
+  }
+
+  startRotation();
+
+  // =========================
+  // DOM refs
+  // =========================
   const form = document.getElementById("authForm");
   const emailEl = document.getElementById("email");
   const passEl = document.getElementById("password");
@@ -62,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const submitBtn = document.getElementById("submitBtn");
   const switchBtn = document.getElementById("switchBtn");
   const forgotBtn = document.getElementById("forgotBtn");
-  const googleBtn = document.getElementById("googleBtn"); // we'll disable it safely
+  const googleBtn = document.getElementById("googleBtn");
 
   const panelTitle = document.getElementById("panelTitle");
   const panelDesc = document.getElementById("panelDesc");
@@ -70,29 +87,58 @@ document.addEventListener("DOMContentLoaded", () => {
   const roleTabs = document.querySelectorAll(".role-tab");
   const modeBtns = document.querySelectorAll(".mode-btn");
 
-  // ========= state =========
-  let role = "student"; // student | company | admin
-  let mode = "login";   // login | signup
+  // =========================
+  // State
+  // =========================
+  let role = "student";
+  let mode = "login";
 
   function render() {
-    const roleLabel = role === "student" ? "Student" : role === "company" ? "Company" : "Admin";
+    const roleLabel =
+      role === "student" ? "Student" :
+        role === "company" ? "Company" :
+          "Admin";
+
     const modeLabel = mode === "login" ? "Login" : "Sign up";
 
-    if (panelTitle) panelTitle.textContent = `${modeLabel} • ${roleLabel}`;
+    if (panelTitle) {
+      panelTitle.textContent = `${modeLabel} • ${roleLabel}`;
+    }
 
     if (panelDesc) {
-      if (role === "admin") panelDesc.textContent = "Admin panel access.";
-      else if (role === "company") panelDesc.textContent = "Manage internships and applicants.";
-      else panelDesc.textContent = "Access your internship dashboard.";
+      if (role === "company") {
+        panelDesc.textContent = mode === "login"
+          ? "Access your company dashboard and manage internships."
+          : "Create your company account to post and manage internships.";
+      } else {
+        panelDesc.textContent = mode === "login"
+          ? "Access your internship dashboard."
+          : "Create your student account and get started.";
+      }
     }
 
     const showCompanyName = role === "company" && mode === "signup";
-    if (companyNameField) companyNameField.classList.toggle("is-hidden", !showCompanyName);
-    if (companyNameEl) companyNameEl.required = showCompanyName;
 
-    if (submitBtn) submitBtn.textContent = mode === "login" ? "Login" : "Create account";
-    if (switchBtn) switchBtn.textContent = mode === "login" ? "Create an account" : "I already have an account";
-    if (forgotBtn) forgotBtn.style.display = mode === "login" ? "inline-block" : "none";
+    if (companyNameField) {
+      companyNameField.classList.toggle("is-hidden", !showCompanyName);
+    }
+
+    if (companyNameEl) {
+      companyNameEl.required = showCompanyName;
+    }
+
+    if (submitBtn) {
+      submitBtn.textContent = mode === "login" ? "Login" : "Create account";
+    }
+
+    if (switchBtn) {
+      switchBtn.textContent =
+        mode === "login" ? "Create an account" : "I already have an account";
+    }
+
+    if (forgotBtn) {
+      forgotBtn.style.display = mode === "login" ? "inline-block" : "none";
+    }
 
     roleTabs.forEach((btn) => {
       const active = btn.dataset.role === role;
@@ -107,13 +153,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function setLoading(isLoading) {
+    if (!submitBtn) return;
+
+    submitBtn.disabled = isLoading;
+    submitBtn.textContent = isLoading
+      ? "Please wait..."
+      : mode === "login"
+        ? "Login"
+        : "Create account";
+  }
+
   function redirectByRole(finalRole) {
-    // You currently have one dashboard.html, keep it simple.
-    // Later you can redirect to separate dashboards.
+    // Keep simple for now
     redirectAfterLogin("dashboard.html");
   }
 
-  // ========= events: role tabs =========
+  // =========================
+  // Events
+  // =========================
   roleTabs.forEach((btn) => {
     btn.addEventListener("click", () => {
       role = btn.dataset.role || "student";
@@ -121,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ========= events: mode buttons =========
   modeBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       mode = btn.dataset.mode || "login";
@@ -129,7 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Toggle mode
   if (switchBtn) {
     switchBtn.addEventListener("click", () => {
       mode = mode === "login" ? "signup" : "login";
@@ -137,29 +193,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Forgot password
   if (forgotBtn) {
     forgotBtn.addEventListener("click", async () => {
       const email = emailEl?.value?.trim();
-      if (!email) return alert("Enter your email first.");
+
+      if (!email) {
+        alert("Enter your email first.");
+        return;
+      }
 
       try {
         await resetPassword(email);
         alert("Password reset email sent.");
-      } catch (e) {
-        alert(e?.message || "Password reset failed.");
+      } catch (error) {
+        alert(error?.message || "Password reset failed.");
       }
     });
   }
 
-  // Disable Google button safely (so it won't break your flow)
   if (googleBtn) {
-    googleBtn.addEventListener("click", () => {
-      alert("Google login is disabled for now. We'll enable it after Email/Password works.");
+    googleBtn.addEventListener("click", async () => {
+      try {
+        await setRemember(Boolean(rememberEl?.checked));
+
+        const user = await loginWithGoogle(role);
+        const savedRole = await getUserRole(user.uid);
+
+        redirectByRole(savedRole || role);
+      } catch (e) {
+        console.error("Google login error:", e);
+        alert(`${e.code || "error"}: ${e.message || "Google login failed."}`);
+      }
     });
   }
 
-  // ========= form submit: REAL Firebase =========
   if (form) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -168,19 +235,29 @@ document.addEventListener("DOMContentLoaded", () => {
       const password = passEl?.value;
       const companyName = companyNameEl?.value?.trim() || "";
 
-      if (!email || !password) return alert("Please enter email and password.");
+      if (!email || !password) {
+        alert("Please enter email and password.");
+        return;
+      }
+
+      if (role === "company" && mode === "signup" && !companyName) {
+        alert("Please enter company name.");
+        return;
+      }
 
       try {
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.textContent = "Please wait...";
-        }
-
+        setLoading(true);
         await setRemember(Boolean(rememberEl?.checked));
 
         if (mode === "signup") {
           const nameToSave = role === "company" ? companyName : "";
-          await signupEmail({ email, password, role, name: nameToSave });
+          await signupEmail({
+            email,
+            password,
+            role,
+            name: nameToSave
+          });
+
           redirectByRole(role);
           return;
         }
@@ -188,13 +265,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const user = await loginEmail({ email, password });
         const savedRole = await getUserRole(user.uid);
         redirectByRole(savedRole || role);
-      } catch (e) {
-        alert(e?.message || "Auth failed.");
+      } catch (error) {
+        alert(error?.message || "Authentication failed.");
       } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = mode === "login" ? "Login" : "Create account";
-        }
+        setLoading(false);
       }
     });
   }
