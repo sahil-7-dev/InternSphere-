@@ -49,7 +49,7 @@ body.theme-light {
 
   --surface: rgba(255, 255, 255, 0.98);
   --surface2: #ffffff;
-  --border: rgba(15, 23, 42, 0.10);
+  --border: rgba(15, 23, 42, 0.1);
 
   --shadow1: 0 10px 24px rgba(15, 23, 42, 0.08);
   --shadow2: 0 20px 46px rgba(15, 23, 42, 0.12);
@@ -73,18 +73,32 @@ a {
 
 :focus-visible {
   outline: none;
-  box-shadow: var(--ring);
-  border-radius: 12px;
+  box-shadow: none;
 }
 
 body {
-  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    Roboto, Arial, sans-serif;
+  font-family:
+    "Inter",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
 
   color: var(--text);
   background:
-    radial-gradient(900px 520px at 12% 0%, rgba(109, 94, 252, 0.14), transparent 60%),
-    radial-gradient(900px 520px at 92% 10%, rgba(168, 85, 247, 0.14), transparent 60%),
+    radial-gradient(
+      900px 520px at 12% 0%,
+      rgba(109, 94, 252, 0.14),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 520px at 92% 10%,
+      rgba(168, 85, 247, 0.14),
+      transparent 60%
+    ),
     linear-gradient(135deg, var(--bg-a), var(--bg-b));
 
   overflow-x: hidden;
@@ -120,7 +134,7 @@ html.lenis body {
 
 body.theme-light .topbar {
   background: rgba(255, 255, 255, 0.96);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.10);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.1);
 }
 
 .topbar-inner {
@@ -367,7 +381,7 @@ body.theme-light .topbar {
 .main-inner {
   display: flex;
   flex-direction: column;
-  gap: 18px; 
+  gap: 18px;
 }
 
 .page-head {
@@ -597,11 +611,11 @@ body.theme-light .topbar {
 }
 
 .tag.warn {
-  border-color: rgba(236, 72, 153, 0.30);
+  border-color: rgba(236, 72, 153, 0.3);
   color: rgba(236, 72, 153, 0.95);
 }
 .tag.ok {
-  border-color: rgba(109, 94, 252, 0.30);
+  border-color: rgba(109, 94, 252, 0.3);
   color: rgba(109, 94, 252, 0.95);
 }
 
@@ -747,7 +761,6 @@ body.theme-light .topbar {
   border-top: 1px solid var(--border);
 }
 
-
 h1 {
   font-size: 40px;
   font-weight: 900;
@@ -797,7 +810,7 @@ p {
     background: color-mix(in srgb, var(--surface2) 96%, transparent);
     box-shadow: var(--shadow2);
     transform: translateX(-120%);
-    transition: 220ms ease; 
+    transition: 220ms ease;
     z-index: 3500;
   }
   .sidebar.open {
