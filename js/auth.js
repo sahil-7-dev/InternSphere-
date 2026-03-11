@@ -8,6 +8,8 @@ import {
   setPersistence,
   browserLocalPersistence,
   browserSessionPersistence,
+  GoogleAuthProvider,
+  signInWithPopup
 } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
 
 import {
@@ -57,4 +59,31 @@ export function getCurrentUser() {
       resolve(user);
     });
   });
+}
+
+export async function loginWithGoogle(defaultRole = "student") {
+
+  const provider = new GoogleAuthProvider();
+
+  provider.setCustomParameters({
+    prompt: "select_account"
+  });
+
+  const result = await signInWithPopup(auth, provider);
+  const user = result.user;
+
+  const userRef = doc(db, "users", user.uid);
+  const snap = await getDoc(userRef);
+
+  if (!snap.exists()) {
+    await setDoc(userRef, {
+      email: user.email || "",
+      name: user.displayName || "",
+      role: defaultRole,
+      provider: "google",
+      createdAt: serverTimestamp()
+    });
+  }
+
+  return user;
 }
