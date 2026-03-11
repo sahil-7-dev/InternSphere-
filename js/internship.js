@@ -114,10 +114,10 @@ document.addEventListener("DOMContentLoaded", () => {
     cards.innerHTML = "";
     if (resultCount) resultCount.textContent = String(list.length);
 
-    if (list.length === 0) {
-      cards.innerHTML = `<div class="muted" style="padding:14px;">No internships found.</div>`;
-      return;
-    }
+ if (list.length === 0) {
+  cards.innerHTML = "";
+  return;
+}
 
     list.forEach((j) => {
       const el = document.createElement("article");
@@ -267,15 +267,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== Firestore realtime =====
  const q = query(collection(db, "internships"));
 
-  onSnapshot(
+    onSnapshot(
     q,
     (snap) => {
       jobs = snap.docs.map((doc) => mapDocToJob(doc.id, doc.data()));
+
+      // Apply dashboard search automatically when page loads
+      if (searchQuery && searchInput) {
+        searchInput.value = searchQuery;
+      }
+
       filterJobs();
     },
     (err) => {
       console.error("Firestore error:", err);
-      if (cards) cards.innerHTML = `<div class="muted" style="padding:14px;">Error loading internships.</div>`;
+     if (cards) cards.innerHTML = `<div class="muted" style="padding:14px;">Error loading internships.</div>`; 
     }
   );
 
@@ -292,3 +298,4 @@ document.addEventListener("click", (e) => {
   clearTimeout(card.__tapT);
   card.__tapT = setTimeout(() => card.classList.remove("tap-highlight"), 1800);
 });
+
