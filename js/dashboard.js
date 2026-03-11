@@ -187,12 +187,12 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTasks("all");
 
   // ===== Ctrl/Cmd + K focus search =====
-  const searchInput = document.getElementById("searchInput");
+  const globalSearch = document.getElementById("globalSearch");
 
   document.addEventListener("keydown", (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
       e.preventDefault();
-      searchInput?.focus();
+      globalSearch?.focus();
     }
   });
 
@@ -250,4 +250,18 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("Logged in as:", user.email);
   }
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const globalSearch = document.getElementById("globalSearch");
+
+  globalSearch?.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      const query = globalSearch.value.trim();
+      if (!query) return;
+
+      window.location.href = `internshipdetails.html?search=${encodeURIComponent(query)}`;
+    }
+  });
 });
