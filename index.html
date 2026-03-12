@@ -9,7 +9,6 @@
       content="InternSphere is a modern virtual internship portal to manage applications, tasks, and progress."
     />
 
-    <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,58 +16,43 @@
       rel="stylesheet"
     />
 
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-/>
-
-<link
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
       rel="stylesheet"
       href="https://unpkg.com/lenis@1.1.20/dist/lenis.css"
     />
-
-    <!-- AOS cdn -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
-     
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/aos@next/dist/aos.css"
+    />
 
     <link rel="stylesheet" href="css/global.css" />
 
-       <!-- AOS cdn -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
-
-   <script>
-      // Initialize Lenis
-      const lenis = new Lenis({
-        duration: 2, // Smooth scrolling duration
-        easing: (t) => 1 - Math.pow(1 - t, 4), // Ease-out effect
-        smooth: true,
-        smoothTouch: true, // Enable smooth scrolling for touch devices
-        touchMultiplier: 2,
-        infinite: false,
-      });
-
-      // Animation loop
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
+    <script>
+      if (localStorage.getItem("theme") === "light") {
+        document.documentElement.classList.add("theme-light-init");
       }
-
-      requestAnimationFrame(raf);
     </script>
-
   </head>
 
-  <!-- Default theme: dark. Toggle remembers choice. -->
   <body class="theme-dark">
     <!-- NAV -->
     <header class="nav">
       <div class="container nav-inner">
-        <!-- If your logo image already contains the word "InternSphere", keep data-logo-has-text="true"
-             If your logo is icon-only, change it to "false" (so text shows) -->
-        <a class="brand" href="#hero" aria-label="InternSphere Home" data-logo-has-text="true">
-          <img class="brand-logo" src="assets/images/Internsphere logo.png" alt="InternSphere logo" />Internsphere
+        <a
+          class="brand"
+          href="#hero"
+          aria-label="InternSphere Home"
+          data-logo-has-text="true"
+        >
+          <img
+            class="brand-logo"
+            src="assets/images/Internsphere logo.png"
+            alt="InternSphere logo"
+          />
           <span class="brand-name">InternSphere</span>
         </a>
 
@@ -83,21 +67,19 @@
         </nav>
 
         <div class="nav-actions">
-          <!-- Theme toggle -->
           <button
             class="theme-toggle"
             id="themeToggle"
             type="button"
             aria-label="Toggle theme"
-            aria-pressed="true"
             title="Toggle theme"
           >
             <span class="toggle-ico" aria-hidden="true">🌙</span>
-            <span class="toggle-label">Dark</span>
+            <span class="toggle-label">Theme</span>
           </button>
 
-          <a class="link-btn" href="login.html">Log in</a>
-          <a class="btn btn-primary" href="#">Sign up</a>
+          <a href="login.html" class="btn btn-ghost">Log in</a>
+          <a href="login.html" class="btn btn-primary">Sign up</a>
 
           <button
             class="hamburger"
@@ -125,23 +107,30 @@
 
         <div class="container hero-inner">
           <div class="hero-left">
-            <h1 class="hero-title" </h1> 
-                     Showcase your work like a
-              <span class="grad rotator" data-words='["product.","portfolio.","career.","brand."]'>product.</span>
+            <h1 class="hero-title">
+              Showcase your work like a
+              <span
+                class="grad rotator"
+                data-words='["product.","portfolio.","career.","brand."]'
+                >product.</span
+              >
               <br />
               Manage internships like a
-              <span class="grad rotator" data-words='["platform.","workflow.","system.","dashboard."]'>platform.</span>
-            </h1> </h1> 
-
-          
+              <span
+                class="grad rotator"
+                data-words='["platform.","workflow.","system.","dashboard."]'
+                >platform.</span
+              >
+            </h1>
 
             <p class="hero-sub">
-             InternSphere connects students and companies in one AI-powered platform
-to manage internships, track progress, and showcase real work experience.
+              InternSphere connects students and companies in one AI-powered
+              platform to manage internships, track progress, and showcase real
+              work experience.
             </p>
 
             <div class="hero-cta">
-              <a class="btn btn-primary btn-lg" href="#">Get started</a>
+              <a class="btn btn-primary btn-lg" href="login.html">Get started</a>
               <a class="btn btn-ghost btn-lg" href="#features">See features</a>
             </div>
 
@@ -152,130 +141,135 @@ to manage internships, track progress, and showcase real work experience.
             </div>
           </div>
 
-<div class="hero-right">
+          <div class="hero-right">
             <div class="hero-panel">
-            <!-- HERO MOCKUP: replace your current dummy dashboard mockup with this -->
-<div class="hero-mockup">
-  <div class="mockup-shell">
-    <div class="mockup-top">
-      <div class="mockup-dots">
-        <span></span><span></span><span></span>
-      </div>
+              <div class="hero-mockup">
+                <div class="mockup-shell">
+                  <div class="mockup-top">
+                    <div class="mockup-dots">
+                      <span></span><span></span><span></span>
+                    </div>
 
-<div class="mockup-title">
-  InternSphere — <span class="ai-rotate">AI Mentor</span>
-</div>
+                    <div class="mockup-title">
+                      InternSphere — <span class="ai-rotate">AI Mentor</span>
+                    </div>
 
-      <div class="mockup-live">
-        <span class="live-dot"></span>
-        <span>LIVE</span>
-      </div>
-    </div>
+                    <div class="mockup-live">
+                      <span class="live-dot"></span>
+                      <span>LIVE</span>
+                    </div>
+                  </div>
 
-    <div class="mockup-body">
-      <!-- Row 1: Internship -->
-      <div class="mockup-card mockup-card--primary">
-        <div class="card-head">
-          <div class="card-kicker">Active Internship</div>
-          <div class="pill">Week <strong>3</strong> / 8</div>
-        </div>
+                  <div class="mockup-body">
+                    <div class="mockup-card mockup-card--primary">
+                      <div class="card-head">
+                        <div class="card-kicker">Active Internship</div>
+                        <div class="pill">Week <strong>3</strong> / 8</div>
+                      </div>
 
-        <div class="card-title">Front-End Developer</div>
-        <div class="card-sub">ByteLabs • Remote • Mentor-guided</div>
+                      <div class="card-title">Front-End Developer</div>
+                      <div class="card-sub">ByteLabs • Remote • Mentor-guided</div>
 
-        <div class="progress">
-          <div class="progress-top">
-            <span>Progress</span>
-            <strong>64%</strong>
-          </div>
-          <div class="progress-track">
-            <div class="progress-fill" style="--p:64;"></div>
-          </div>
-        </div>
-      </div>
+                      <div class="progress">
+                        <div class="progress-top">
+                          <span>Progress</span>
+                          <strong>64%</strong>
+                        </div>
+                        <div class="progress-track">
+                          <div class="progress-fill" style="--p:64;"></div>
+                        </div>
+                      </div>
+                    </div>
 
-      <!-- Row 2: Two tiles -->
-      <div class="mockup-grid2">
-        <!-- AI Readiness ring -->
-        <div class="mockup-card">
-          <div class="card-kicker">AI Readiness</div>
+                    <div class="mockup-grid2">
+                      <div class="mockup-card">
+                        <div class="card-kicker">AI Readiness</div>
 
-          <div class="ring">
-            <svg viewBox="0 0 120 120" class="ring-svg" aria-hidden="true">
-              <circle class="ring-bg" cx="60" cy="60" r="46"></circle>
-              <circle class="ring-fg" cx="60" cy="60" r="46" style="--val:78;"></circle>
-            </svg>
+                        <div class="ring">
+                          <svg viewBox="0 0 120 120" class="ring-svg" aria-hidden="true">
+                            <circle class="ring-bg" cx="60" cy="60" r="46"></circle>
+                            <circle
+                              class="ring-fg"
+                              cx="60"
+                              cy="60"
+                              r="46"
+                              style="--val:78;"
+                            ></circle>
+                          </svg>
 
-            <div class="ring-center">
-              <div class="ring-val">78%</div>
-              <div class="ring-lbl">match</div>
-            </div>
-          </div>
+                          <div class="ring-center">
+                            <div class="ring-val">78%</div>
+                            <div class="ring-lbl">match</div>
+                          </div>
+                        </div>
 
-          <div class="mini-row">
-            <span class="mini-tag">ATS</span>
-            <strong>82</strong>
-            <span class="mini-sep">•</span>
-            <span class="mini-tag">Skills</span>
-            <strong>71</strong>
-          </div>
-        </div>
+                        <div class="mini-row">
+                          <span class="mini-tag">ATS</span>
+                          <strong>82</strong>
+                          <span class="mini-sep">•</span>
+                          <span class="mini-tag">Skills</span>
+                          <strong>71</strong>
+                        </div>
+                      </div>
 
-        <!-- Tasks summary -->
-        <div class="mockup-card">
-          <div class="card-kicker">Today</div>
+                      <div class="mockup-card">
+                        <div class="card-kicker">Today</div>
 
-          <div class="stat-stack">
-            <div class="stat">
-              <span class="stat-ico">✔</span>
-              <div class="stat-text">
-                <div class="stat-top"><strong>5</strong> Completed</div>
-                <div class="stat-sub">Task submissions</div>
+                        <div class="stat-stack">
+                          <div class="stat">
+                            <span class="stat-ico">✔</span>
+                            <div class="stat-text">
+                              <div class="stat-top"><strong>5</strong> Completed</div>
+                              <div class="stat-sub">Task submissions</div>
+                            </div>
+                          </div>
+
+                          <div class="stat">
+                            <span class="stat-ico stat-ico--warn">⏳</span>
+                            <div class="stat-text">
+                              <div class="stat-top"><strong>2</strong> Pending</div>
+                              <div class="stat-sub">In review queue</div>
+                            </div>
+                          </div>
+
+                          <div class="stat">
+                            <span class="stat-ico stat-ico--info">💬</span>
+                            <div class="stat-text">
+                              <div class="stat-top"><strong>1</strong> Feedback</div>
+                              <div class="stat-sub">Mentor notes</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="ai-tip">
+                      <span class="ai-chip">AI Insight</span>
+                      <span class="ai-text">
+                        <span
+                          class="ai-dyn ai-dyn--small"
+                          data-words="Suggestion: Improve REST APIs + state management.|Tip: Add Git branches + PR workflow.|Insight: Boost ATS score with quantified projects.|Hint: Focus on responsiveness + accessibility."
+                        ></span>
+                      </span>
+                      <span class="ai-spark" aria-hidden="true">✦</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hero-trustbar">
+                <span class="trust-text">Trusted by teams & students</span>
+
+                <div class="trust-pills">
+                  <span>Nova</span>
+                  <span>Byte</span>
+                  <span>Orbit</span>
+                  <span>Zen</span>
+                </div>
               </div>
             </div>
-
-            <div class="stat">
-              <span class="stat-ico stat-ico--warn">⏳</span>
-              <div class="stat-text">
-                <div class="stat-top"><strong>2</strong> Pending</div>
-                <div class="stat-sub">In review queue</div>
-              </div>
-            </div>
-
-            <div class="stat">
-              <span class="stat-ico stat-ico--info">💬</span>
-              <div class="stat-text">
-                <div class="stat-top"><strong>1</strong> Feedback</div>
-                <div class="stat-sub">Mentor notes</div>
-              </div>
-            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Bottom AI tip strip -->
-      <div class="ai-tip">
-        <span class="ai-chip">AI Insight</span>
-    <span class="ai-text">
-  <span class="ai-dyn ai-dyn--small"
-    data-words="Suggestion: Improve REST APIs + state management.|Tip: Add Git branches + PR workflow.|Insight: Boost ATS score with quantified projects.|Hint: Focus on responsiveness + accessibility."></span>
-</span>
-        <span class="ai-spark" aria-hidden="true">✦</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="hero-trustbar">
-  <span class="trust-text">Trusted by teams & students</span>
-
-  <div class="trust-pills">
-    <span>Nova</span>
-    <span>Byte</span>
-    <span>Orbit</span>
-    <span>Zen</span>
-  </div>
-</div>
       </section>
 
       <!-- FEATURES -->
@@ -285,18 +279,21 @@ to manage internships, track progress, and showcase real work experience.
             <span class="kicker">FEATURES</span>
             <h2>Everything you need for a complete virtual internship experience</h2>
             <p class="muted">
-             AI assistance, real project workflows, and internship management in one platform.
+              AI assistance, real project workflows, and internship management in one platform.
             </p>
           </div>
 
-          <div class="grid3"
-          data-aos="fade-up"
-                    data-aos-delay="60"
-                    data-aos-duration="3000"
-                    data-aos-easing="ease"
+          <div
+            class="grid3"
+            data-aos="fade-up"
+            data-aos-delay="60"
+            data-aos-duration="1200"
+            data-aos-easing="ease"
           >
             <article class="card">
-              <div class="card-ico"><img src="assets/images/AI icon.svg" alt=""></div>
+              <div class="card-ico">
+                <img src="assets/images/AI icon.svg" alt="AI icon" />
+              </div>
               <h3>AI Resume Analyzer</h3>
               <p>Score resumes, detect skill gaps, and get improvement suggestions instantly.</p>
               <ul>
@@ -307,7 +304,9 @@ to manage internships, track progress, and showcase real work experience.
             </article>
 
             <article class="card">
-              <div class="card-ico"><img src="assets/images/icons8-dashboards-32.png" alt=""></div>
+              <div class="card-ico">
+                <img src="assets/images/icons8-dashboards-32.png" alt="Dashboard icon" />
+              </div>
               <h3>Smart Dashboard</h3>
               <p>Track applications, deadlines, and progress without messy spreadsheets.</p>
               <ul>
@@ -318,7 +317,9 @@ to manage internships, track progress, and showcase real work experience.
             </article>
 
             <article class="card">
-              <div class="card-ico"><img src="assets/images/icons8-work-50.png" alt=""></div>
+              <div class="card-ico">
+                <img src="assets/images/icons8-work-50.png" alt="Workroom icon" />
+              </div>
               <h3>Virtual Workroom</h3>
               <p>Assign tasks, submit work, and keep feedback organized in one workroom.</p>
               <ul>
@@ -332,26 +333,26 @@ to manage internships, track progress, and showcase real work experience.
       </section>
 
       <!-- HOW -->
-      <section id="how" class="section"
-      >
+      <section id="how" class="section">
         <div class="container">
-          <div class="head" 
+          <div
+            class="head"
             data-aos="fade-up"
-                    data-aos-delay="60"
-                    data-aos-duration="2000"
-                    data-aos-easing="ease"
+            data-aos-delay="60"
+            data-aos-duration="1000"
+            data-aos-easing="ease"
           >
-            <span class="kicker" 
-            >HOW IT WORKS</span>
+            <span class="kicker">HOW IT WORKS</span>
             <h2>Simple steps to get started</h2>
             <p class="muted">No heavy setup — it’s built to be demo-ready.</p>
           </div>
 
-          <div class="steps"
-              data-aos="zoom-out"
-                    data-aos-delay="60"
-                    data-aos-duration="2000"
-                    data-aos-easing="ease"
+          <div
+            class="steps"
+            data-aos="zoom-out"
+            data-aos-delay="60"
+            data-aos-duration="1000"
+            data-aos-easing="ease"
           >
             <div class="step">
               <div class="step-num">1</div>
@@ -377,28 +378,29 @@ to manage internships, track progress, and showcase real work experience.
               </div>
             </div>
           </div>
-
-        
         </div>
       </section>
 
       <!-- CTA -->
-      <section id="contact" class="section section-cta"
+      <section
+        id="contact"
+        class="section section-cta"
         data-aos="fade-up"
-                    data-aos-delay="60"
-                    data-aos-duration="2000"
-                    data-aos-easing="ease"
+        data-aos-delay="60"
+        data-aos-duration="1000"
+        data-aos-easing="ease"
       >
         <div class="container">
           <div class="cta">
             <div class="cta-left">
               <h2>Start your internship journey today</h2>
               <p class="muted">
-               Discover virtual internships, work on real tasks, and gain industry-ready experience with AI-powered guidance.
+                Discover virtual internships, work on real tasks, and gain industry-ready
+                experience with AI-powered guidance.
               </p>
               <div class="hero-cta">
-                <a class="btn btn-primary btn-lg" href="#">Get Started</a>
-                <a class="btn btn-ghost btn-lg" href="#">Learn more</a>
+                <a class="btn btn-primary btn-lg" href="login.html">Get Started</a>
+                <a class="btn btn-ghost btn-lg" href="#features">Learn more</a>
               </div>
             </div>
 
@@ -422,7 +424,11 @@ to manage internships, track progress, and showcase real work experience.
       <div class="container footer-grid">
         <div>
           <div class="foot-brand">
-            <img class="brand-logo sm" src="assets/images/Internsphere logo.png" alt="InternSphere logo" />
+            <img
+              class="brand-logo sm"
+              src="assets/images/Internsphere logo.png"
+              alt="InternSphere logo"
+            />
             <b>InternSphere</b>
           </div>
           <p class="muted">
@@ -459,31 +465,37 @@ to manage internships, track progress, and showcase real work experience.
       </div>
     </footer>
 
-   <script type="module" src="js/main.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script>
+      const lenis = new Lenis({
+        duration: 1.4,
+        easing: (t) => 1 - Math.pow(1 - t, 4),
+        smooth: true,
+        smoothTouch: true,
+        touchMultiplier: 1.6,
+        infinite: false,
+      });
 
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    </script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init({
-        // Global settings:
-        disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
-        startEvent: "DOMContentLoaded", // name of the event dispatched on the document, that AOS should initialize on
-        initClassName: "aos-init", // class applied after initialization
-        animatedClassName: "aos-animate", // class applied on animation
-        useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
-        disableMutationObserver: false, // disables automatic mutations' detections (advanced)
-        debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
-        throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
-
-        // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-        offset: 120, // offset (in px) from the original trigger point
-        delay: 0, // values from 0 to 3000, with step 50ms
-        duration: 400, // values from 0 to 3000, with step 50ms
-        easing: "ease", // default easing for AOS animations
-        once: true, // whether animation should happen only once - while scrolling down
-        mirror: false, // whether elements should animate out while scrolling past them
-        anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
+        offset: 120,
+        duration: 700,
+        easing: "ease",
+        once: true,
+        mirror: false,
+        anchorPlacement: "top-bottom",
       });
     </script>
 
+    <script type="module" src="js/main.js"></script>
+    <script src="js/theme.js"></script>
   </body>
 </html>
