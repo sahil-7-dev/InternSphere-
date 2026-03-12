@@ -1,4 +1,4 @@
-// js/internship.js (COPY-PASTE WHOLE FILE)
+// js/internship.js
 
 import { requireAuth } from "./guard.js";
 requireAuth("login.html");
@@ -8,7 +8,6 @@ import {
   collection,
   onSnapshot,
   query,
-  where,
 } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -21,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const ico = themeToggle.querySelector(".toggle-ico");
     const label = themeToggle.querySelector(".toggle-label");
     const isDark = mode === "dark";
+
     themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
     if (ico) ico.textContent = isDark ? "🌙" : "☀️";
     if (label) label.textContent = isDark ? "Dark" : "Light";
@@ -64,8 +64,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetBtn = document.getElementById("resetFilters");
   const clearBtn = document.getElementById("clearFilters");
 
+  // ===== Read search from URL  =====
+  const params = new URLSearchParams(window.location.search);
+  const searchQuery = (params.get("search") || "").trim();
+
   // ===== State =====
-  let jobs = []; // <-- comes from Firestore (realtime)
+  let jobs = [];
 
   let state = {
     keyword: "",
@@ -99,8 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
       company: d.company || "Unknown",
       role: d.title || "Intern",
       location: d.location || "Remote",
-      type: (d.type || "remote").toLowerCase(),        // remote/hybrid/onsite
-      duration: d.durationKey || d.duration || "3-4",   // you can store durationKey as 1-2/3-4/6+
+      type: (d.type || "remote").toLowerCase(),
+      duration: d.durationKey || d.duration || "3-4",
       match: typeof d.match === "number" ? d.match : 70,
       desc: d.desc || d.description || "No description provided.",
       skills: Array.isArray(d.skills) ? d.skills : ["HTML", "CSS", "JavaScript"],
@@ -111,13 +115,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== Render =====
   function render(list) {
     if (!cards) return;
+
     cards.innerHTML = "";
     if (resultCount) resultCount.textContent = String(list.length);
 
- if (list.length === 0) {
-  cards.innerHTML = "";
-  return;
-}
+    if (list.length === 0) {
+      cards.innerHTML = "";
+      return;
+    }
 
     list.forEach((j) => {
       const el = document.createElement("article");
@@ -148,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <div class="job-foot">
           <div class="skills">
-            ${j.skills.slice(0, 3).map(s => `<span class="skill">${safe(s)}</span>`).join("")}
+            ${j.skills.slice(0, 3).map((s) => `<span class="skill">${safe(s)}</span>`).join("")}
           </div>
 
           <div class="actions">
@@ -185,21 +190,26 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
 
-    if (state.location) list = list.filter((j) => j.location === state.location);
-    if (state.type) list = list.filter((j) => j.type === state.type);
-   if (state.duration) {
-  list = list.filter((j) => {
-    const val = String(j.duration || "").toLowerCase();
+    if (state.location) {
+      list = list.filter((j) => j.location === state.location);
+    }
 
-    const num = parseInt(val.match(/\d+/)?.[0] || "0", 10);
+    if (state.type) {
+      list = list.filter((j) => j.type === state.type);
+    }
 
-    if (state.duration === "1-2") return num >= 1 && num <= 2;
-    if (state.duration === "3-4") return num >= 3 && num <= 4;
-    if (state.duration === "6+") return num >= 6;
+    if (state.duration) {
+      list = list.filter((j) => {
+        const val = String(j.duration || "").toLowerCase();
+        const num = parseInt(val.match(/\d+/)?.[0] || "0", 10);
 
-    return true;
-  });
-}
+        if (state.duration === "1-2") return num >= 1 && num <= 2;
+        if (state.duration === "3-4") return num >= 3 && num <= 4;
+        if (state.duration === "6+") return num >= 6;
+
+        return true;
+      });
+    }
 
     if (state.skills.size) {
       list = list.filter((j) => {
@@ -208,15 +218,21 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    if (state.sort === "match") list.sort((a, b) => (b.match || 0) - (a.match || 0));
-    if (state.sort === "company") list.sort((a, b) => a.company.localeCompare(b.company));
+    if (state.sort === "match") {
+      list.sort((a, b) => (b.match || 0) - (a.match || 0));
+    }
+
+    if (state.sort === "company") {
+      list.sort((a, b) => a.company.localeCompare(b.company));
+    }
 
     render(list);
   }
 
-  // Chips (single select groups)
+  // ===== Chips (single select groups) =====
   function setupChipGroup(selector, key, attr) {
     const chips = document.querySelectorAll(selector);
+
     chips.forEach((c) => {
       c.addEventListener("click", () => {
         chips.forEach((x) => x.classList.remove("active"));
@@ -225,21 +241,24 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
   setupChipGroup(".chip[data-type]", "type", "data-type");
   setupChipGroup(".chip[data-duration]", "duration", "data-duration");
 
-  // Skills (multi select)
+  // ===== Skills (multi select) =====
   document.querySelectorAll(".chip[data-skill]").forEach((c) => {
     c.addEventListener("click", () => {
       const s = c.getAttribute("data-skill");
       if (!s) return;
+
       c.classList.toggle("active");
+
       if (state.skills.has(s)) state.skills.delete(s);
       else state.skills.add(s);
     });
   });
 
-  // Apply/reset buttons
+  // ===== Apply/reset buttons =====
   applyBtn?.addEventListener("click", () => {
     state.keyword = keyword?.value.trim() || "";
     state.location = locationSel?.value || "";
@@ -248,31 +267,42 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   resetBtn?.addEventListener("click", () => {
-    state = { keyword: "", location: "", type: "", duration: "", skills: new Set(), sort: "latest" };
+    state = {
+      keyword: "",
+      location: "",
+      type: "",
+      duration: "",
+      skills: new Set(),
+      sort: "latest",
+    };
+
     if (keyword) keyword.value = "";
     if (locationSel) locationSel.value = "";
     if (sortBy) sortBy.value = "latest";
+    if (searchInput) searchInput.value = "";
 
     document.querySelectorAll(".chip").forEach((c) => c.classList.remove("active"));
-    document.querySelectorAll('.chip[data-type=""], .chip[data-duration=""]').forEach((c) => c.classList.add("active"));
+    document
+      .querySelectorAll('.chip[data-type=""], .chip[data-duration=""]')
+      .forEach((c) => c.classList.add("active"));
 
     filterJobs();
   });
 
   clearBtn?.addEventListener("click", () => resetBtn?.click());
 
-  // Live search typing
+  // ===== Live search typing =====
   searchInput?.addEventListener("input", filterJobs);
 
   // ===== Firestore realtime =====
- const q = query(collection(db, "internships"));
+  const q = query(collection(db, "internships"));
 
-    onSnapshot(
+  onSnapshot(
     q,
     (snap) => {
       jobs = snap.docs.map((doc) => mapDocToJob(doc.id, doc.data()));
 
-      // Apply dashboard search automatically when page loads
+      
       if (searchQuery && searchInput) {
         searchInput.value = searchQuery;
       }
@@ -281,15 +311,16 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     (err) => {
       console.error("Firestore error:", err);
-     if (cards) cards.innerHTML = `<div class="muted" style="padding:14px;">Error loading internships.</div>`; 
+      if (cards) {
+        cards.innerHTML = `<div class="muted" style="padding:14px;">Error loading internships.</div>`;
+      }
     }
   );
 
-  // Initial placeholder
   render([]);
 });
 
-// Premium touch highlight for job cards (mobile-friendly)
+
 document.addEventListener("click", (e) => {
   const card = e.target.closest?.(".job");
   if (!card) return;
@@ -298,4 +329,3 @@ document.addEventListener("click", (e) => {
   clearTimeout(card.__tapT);
   card.__tapT = setTimeout(() => card.classList.remove("tap-highlight"), 1800);
 });
-
