@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
     animateValue(el, 0, finalValue, 1200);
   });
 
-  // ===== Reveal on scroll =====
+ 
   const reveals = document.querySelectorAll(".reveal");
 
   if (reveals.length > 0) {
@@ -240,12 +240,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// ===== Body loaded class =====
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
 
-// ===== Optional auth log only =====
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("Logged in as:", user.email);
