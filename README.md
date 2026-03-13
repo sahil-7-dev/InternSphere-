@@ -17,11 +17,11 @@ The platform allows students to explore internships, complete tasks in a virtual
 
 ## Project Screenshots
 
-### 1. Landing Page
-![Landing Page](screenshots/landing-page.png)
+### Landing Page
+![Landing Page](screenshot/landing-page.png)
 
-### 2. Internship Listing Dashboard
-![Internship Listing](screenshots/internship-listing.png)
+### Internship Listing
+![Internship Listing](screenshot/internship-listing.png)
 
 ## Technologies Used
 - HTML5
