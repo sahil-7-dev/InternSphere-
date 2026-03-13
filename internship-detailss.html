@@ -4,7 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Careers - Job Detail</title>
+
+  <script>
+    (() => {
+      const savedTheme =
+        localStorage.getItem("theme") ||
+        localStorage.getItem("internsphere_theme") ||
+        "dark";
+
+      document.documentElement.classList.remove("dark", "light");
+      document.documentElement.classList.add(
+        savedTheme === "light" ? "light" : "dark"
+      );
+    })();
+  </script>
+
     <link rel="stylesheet" href="css/internship-details.css" />
+
+
     <!-- lenis cdn -->
     <link
       rel="stylesheet"
@@ -44,7 +61,7 @@
       <div class="nav-bar">
         <div class="container nav-inner">
           <a class="brand" href="#">
-            <span class="brand-word"> <img src="assets/images/Internsphere logo.png" alt="" width="44px" height="44px"> InternSphere</span>
+            <span class="brand-word"> <img src="assets/images/Internsphere logo.png" alt="" width="auto" height="56px"> InternSphere</span>
           </a>
 
           <nav class="nav">
@@ -147,7 +164,6 @@
           <button class="tab active" type="button">Role details</button>
           <button class="tab" type="button">Our mission</button>
           <button class="tab" type="button">Office</button>
-          <button class="tab" type="button">Stobox Culture</button>
         </div>
         <div class="container content-grid">
           <div class="content-left">
