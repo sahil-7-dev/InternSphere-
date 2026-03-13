@@ -20,8 +20,8 @@ The platform allows students to explore internships, complete tasks in a virtual
 ### Landing Page
 ![Landing Page](screenshots/landing-page.png)
 
-### Internship Dashboard
-![Internship Dashboard](screenshots/internship-dashboard.png)
+### Internship Listing
+![Internship Listing](screenshots/internship-listing.png)
 
 ## Technologies Used
 - HTML5
