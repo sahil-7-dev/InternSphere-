@@ -1578,7 +1578,7 @@ body.theme-dark #features .kicker {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: internsphereGlowSweep 4s ease-in-out infinite;
+  animation: internsphereGlowSweep 6s ease-in-out infinite;
 }
 
 /* Dark theme: hero mockup hover glow */
