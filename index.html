@@ -28,14 +28,17 @@
       rel="stylesheet"
       href="https://unpkg.com/aos@next/dist/aos.css"
     />
+    
+    <script>
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  if (savedTheme === "dark") {
+    document.documentElement.classList.add("dark");
+  }
+</script>
 
     <link rel="stylesheet" href="css/global.css" />
 
-    <script>
-      if (localStorage.getItem("theme") === "light") {
-        document.documentElement.classList.add("theme-light-init");
-      }
-    </script>
+ 
   </head>
 
   <body class="theme-dark">
