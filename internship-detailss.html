@@ -5,22 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Careers - Job Detail</title>
 
-  <script>
-    (() => {
-      const savedTheme =
-        localStorage.getItem("theme") ||
-        localStorage.getItem("internsphere_theme") ||
-        "dark";
+    <script>
+      (() => {
+        const savedTheme =
+          localStorage.getItem("theme") ||
+          localStorage.getItem("internsphere_theme") ||
+          "dark";
 
-      document.documentElement.classList.remove("dark", "light");
-      document.documentElement.classList.add(
-        savedTheme === "light" ? "light" : "dark"
-      );
-    })();
-  </script>
+        document.documentElement.classList.remove("dark", "light");
+        document.documentElement.classList.add(
+          savedTheme === "light" ? "light" : "dark",
+        );
+      })();
+    </script>
 
     <link rel="stylesheet" href="css/internship-details.css" />
-
 
     <!-- lenis cdn -->
     <link
@@ -56,12 +55,18 @@
   <body>
     <!-- ===== TOP / HEADER ===== -->
     <header class="site-header">
-
-
       <div class="nav-bar">
         <div class="container nav-inner">
           <a class="brand" href="#">
-            <span class="brand-word"> <img src="assets/images/Internsphere logo.png" alt="" width="auto" height="56px"> InternSphere</span>
+            <span class="brand-word">
+              <img
+                src="assets/images/Internsphere logo.png"
+                alt=""
+                width="auto"
+                height="56px"
+              />
+              InternSphere</span
+            >
           </a>
 
           <nav class="nav">
@@ -79,14 +84,16 @@
             >
             <a class="nav-link" href="#">Career <span class="caret">▾</span></a>
             <a class="nav-link" href="#">Blog</a>
-<button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-  🌙
-</button>
-
+            <button
+              id="themeToggle"
+              class="theme-toggle"
+              aria-label="Toggle theme"
+            >
+              🌙
+            </button>
           </nav>
 
           <div class="nav-actions">
-
             <button class="btn btn-primary">Find a role</button>
             <button class="hamburger" aria-label="Open menu">☰</button>
           </div>
@@ -96,11 +103,7 @@
 
     <main class="page">
       <!-- ===== HERO ===== -->
-      <section class="hero"
-      
-     
-                    
-      >
+      <section class="hero">
         <div class="hero-container hero-grid">
           <div class="hero-left">
             <div class="breadcrumb">
@@ -123,7 +126,13 @@
 
             <div class="hero-meta">
               <div class="meta-item">
-                <span class="meta-ico"><img src="assets/images/icons8-dashboard-100.png" alt="designicon" width="38px" height="38px"></span>
+                <span class="meta-ico"
+                  ><img
+                    src="assets/images/icons8-dashboard-100.png"
+                    alt="designicon"
+                    width="38px"
+                    height="38px"
+                /></span>
                 <div>
                   <div class="meta-label">Department</div>
                   <div class="meta-value">Design</div>
@@ -131,7 +140,13 @@
               </div>
 
               <div class="meta-item">
-                <span class="meta-ico"><img src="assets/images/icons8-location-50.png" alt="" width="38px" height="auto"></span>
+                <span class="meta-ico"
+                  ><img
+                    src="assets/images/icons8-location-50.png"
+                    alt=""
+                    width="38px"
+                    height="auto"
+                /></span>
                 <div>
                   <div class="meta-label">Location</div>
                   <div class="meta-value">German, Munich</div>
@@ -139,7 +154,13 @@
               </div>
 
               <div class="meta-item">
-                <span class="meta-ico"><img src="assets/images/icons8-time-48.png" alt="" width="38px" height="auto"></span>
+                <span class="meta-ico"
+                  ><img
+                    src="assets/images/icons8-time-48.png"
+                    alt=""
+                    width="38px"
+                    height="auto"
+                /></span>
                 <div>
                   <div class="meta-label">Salary</div>
                   <div class="meta-value">$115,000 – $125,000 + Benefits</div>
@@ -151,7 +172,14 @@
           <div class="hero-right">
             <div class="hero-image" aria-label="Company photo placeholder">
               <div class="hero-image-inner">
-                <div class="img-tag"><img src="assets/images/pexels-vernie-andrea-729506-4043789.jpg" alt="" width="100%" height="auto"></div>
+                <div class="img-tag">
+                  <img
+                    src="assets/images/pexels-vernie-andrea-729506-4043789.jpg"
+                    alt=""
+                    width="100%"
+                    height="auto"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -169,21 +197,17 @@
           <div class="content-left">
             <article class="card card-pad">
               <hr class="sep" />
-              <div class="mini-grid">
-                <div class="mini-item">
-                  <div>
-                    POSITION
-                  </div>
-                  <div
-                    class="mini-value">
-                    Senior Product Designer
-                  </div>
-                </div>
-                <div class="mini-item">
-                  <div class="mini-label">EMPLOYMENT</div>
-                  <div class="mini-value">In-house or remote</div>
-                </div>
-              </div>
+           <div class="mini-grid">
+  <div class="mini-item">
+    <div class="mini-label">Position</div>
+    <div class="mini-value" id="jobPosition">UI/UX Design Intern</div>
+  </div>
+
+  <div class="mini-item">
+    <div class="mini-label">Employment</div>
+    <div class="mini-value" id="jobEmployment">Onsite</div>
+  </div>
+</div>
               <h3 class="h3">Your mission</h3>
               <p class="p">
                 You’ll be collaborating with other team members in a
@@ -223,20 +247,21 @@
                 </li>
               </ul>
 
-              <div class="info-accordion" data-aos="zoom-in"
-                    data-aos-delay="60"
-                    data-aos-duration="2000"
-                    data-aos-easing="ease">
-        
-              </div>
+              <div
+                class="info-accordion"
+                data-aos="zoom-in"
+                data-aos-delay="60"
+                data-aos-duration="2000"
+                data-aos-easing="ease"
+              ></div>
             </article>
           </div>
 
-          <aside class="content-right"
-          
-           data-aos="zoom-in"
-                    data-aos-delay="60"
-                    data-aos-duration="1500"
+          <aside
+            class="content-right"
+            data-aos="zoom-in"
+            data-aos-delay="60"
+            data-aos-duration="1500"
           >
             <div class="apply-card">
               <h3 class="apply-title">Ready to apply?</h3>
@@ -321,7 +346,15 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <div class="footer-col">
-          <div class="footer-brand"><img src="assets/images/Internsphere logo.png" alt="" width="44px" height="auto"> InternSphere</div>
+          <div class="footer-brand">
+            <img
+              src="assets/images/Internsphere logo.png"
+              alt=""
+              width="44px"
+              height="auto"
+            />
+            InternSphere
+          </div>
           <p class="footer-desc">
             Building digital financial infrastructure and empowering businesses
             with innovative technology solutions.
