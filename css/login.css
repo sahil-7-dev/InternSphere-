@@ -94,10 +94,12 @@ body {
   top: 28px;
   left: 28px;
   z-index: 3;
+    height: 56px;
+  width: auto;
 }
 
 .hero-logo img{
-  height: 56px;
+  height: 60px;
   width: auto;
   display: block;
 }
