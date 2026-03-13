@@ -73,7 +73,8 @@
   --r16: 16px;
 }
 
-body.dark{
+body.dark,
+html.dark body{
   --bg: #05060f;
   --page:
     radial-gradient(900px 480px at 10% 5%, rgba(109,94,252,0.16), transparent 60%),
@@ -304,6 +305,7 @@ a{
   font-weight: 900;
   letter-spacing: -0.02em;
   color: var(--card-text-strong);
+  padding: 0 0 0 43px;
 }
 
 .nav{
@@ -377,12 +379,12 @@ a{
    HERO
    */
 
-.hero-grid{
+ .hero-grid{
   display: grid;
   grid-template-columns: 1.12fr 0.88fr;
   height: 500px;
   align-items: stretch;
-}
+} 
 
 .hero-left{
   background: var(--hero-left-bg);
@@ -485,13 +487,16 @@ a{
   margin-top: 2px;
 }
 
-.hero-right{
+
+
+ .hero-right{
   position: relative;
   min-height: 320px;
   overflow: visible;
   margin-left: -100px;
   height: auto;
 }
+
 
 .hero-image{
   height: 100%;
