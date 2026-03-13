@@ -1,27 +1,33 @@
 const toggleBtn = document.getElementById("themeToggle");
 
+function applyTheme(theme) {
+  const isDark = theme === "dark";
 
-function applyTheme(theme){
-  if(theme === "dark"){
-    document.body.classList.add("dark");
-  } else {
-    document.body.classList.remove("dark");
+  document.documentElement.classList.toggle("dark", isDark);
+  document.documentElement.classList.toggle("light", !isDark);
+
+  document.body.classList.toggle("dark", isDark);
+  document.body.classList.toggle("light", !isDark);
+
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+  localStorage.setItem("internsphere_theme", isDark ? "dark" : "light");
+
+  if (toggleBtn) {
+    toggleBtn.textContent = isDark ? "🌙" : "☀️";
   }
 }
 
-// Load saved theme
-const savedTheme = localStorage.getItem("theme") || "dark";
+const savedTheme =
+  localStorage.getItem("theme") ||
+  localStorage.getItem("internsphere_theme") ||
+  "dark";
+
 applyTheme(savedTheme);
 
-// Toggle theme when button is clicked
-if(toggleBtn){
-  toggleBtn.addEventListener("click", () => {
+toggleBtn?.addEventListener("click", () => {
+  const isDark =
+    document.documentElement.classList.contains("dark") ||
+    document.body.classList.contains("dark");
 
-    const isDark = document.body.classList.contains("dark");
-    const newTheme = isDark ? "light" : "dark";
-
-    applyTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-
-  });
-}
+  applyTheme(isDark ? "light" : "dark");
+});
