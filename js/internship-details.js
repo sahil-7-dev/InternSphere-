@@ -83,7 +83,7 @@ async function loadInternship() {
   // ---- middle section ----
   const miniValues = document.querySelectorAll(".mini-grid .mini-value");
   if (miniValues[0]) miniValues[0].textContent = title;
-  if (miniValues[1]) miniValues[1].textContent = `${type} • ${duration}`;
+  if (miniValues[1]) miniValues[1].textContent = type;
 
   // ---- optional skills ----
   const acc = $(".info-accordion");
