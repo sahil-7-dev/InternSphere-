@@ -15,12 +15,12 @@ The platform allows students to explore internships, complete tasks in a virtual
 - Task Submission System
 - Admin and Company Panels
 
-## Screenshots
+## Project Screenshots
 
-### Landing Page
+### 1. Landing Page
 ![Landing Page](screenshots/landing-page.png)
 
-### Internship Listing
+### 2. Internship Listing Dashboard
 ![Internship Listing](screenshots/internship-listing.png)
 
 ## Technologies Used
