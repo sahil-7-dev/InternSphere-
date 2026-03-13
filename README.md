@@ -15,6 +15,14 @@ The platform allows students to explore internships, complete tasks in a virtual
 - Task Submission System
 - Admin and Company Panels
 
+## Screenshots
+
+### Landing Page
+![Landing Page](screenshots/landing-page.png)
+
+### Internship Dashboard
+![Internship Dashboard](screenshots/internship-dashboard.png)
+
 ## Technologies Used
 - HTML5
 - CSS3
