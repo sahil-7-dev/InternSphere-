@@ -1,15 +1,15 @@
-// script.js
 document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
   const navLinksUL = document.getElementById("navLinks");
   const navLinks = document.querySelectorAll(".nav-link");
   const sections = document.querySelectorAll("section[id]");
   const indicator = document.querySelector(".nav-indicator");
-
-  // ===== Theme Toggle =====
   const themeToggle = document.getElementById("themeToggle");
-  const THEME_KEY = "internsphere_theme";
 
+  const THEME_KEY = "theme";
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ===== Theme =====
   function setToggleUI(mode) {
     if (!themeToggle) return;
 
@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const isDark = mode === "dark";
 
     themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
+
     if (ico) ico.textContent = isDark ? "🌙" : "☀️";
     if (label) label.textContent = isDark ? "Dark" : "Light";
   }
@@ -29,14 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
     setToggleUI(mode);
   }
 
-  const saved = localStorage.getItem(THEME_KEY);
-  applyTheme(saved === "light" ? "light" : "dark");
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  applyTheme(savedTheme === "light" ? "light" : "dark");
 
   themeToggle?.addEventListener("click", () => {
     const isDarkNow = document.body.classList.contains("theme-dark");
-    const next = isDarkNow ? "light" : "dark";
-    localStorage.setItem(THEME_KEY, next);
-    applyTheme(next);
+    const nextTheme = isDarkNow ? "light" : "dark";
+    localStorage.setItem(THEME_KEY, nextTheme);
+    applyTheme(nextTheme);
   });
 
   // ===== Mobile menu =====
@@ -64,9 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", () => setMenu(false));
   });
 
-  // ===== Indicator =====
+  // ===== Nav indicator =====
   function moveIndicator(link) {
     if (!indicator || !link || !navLinksUL) return;
+    if (window.innerWidth <= 860) return;
 
     const li = link.parentElement;
     if (!li) return;
@@ -74,11 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const ulRect = navLinksUL.getBoundingClientRect();
     const liRect = li.getBoundingClientRect();
 
-    indicator.style.width = liRect.width + "px";
-    indicator.style.left = liRect.left - ulRect.left + "px";
+    indicator.style.width = `${liRect.width}px`;
+    indicator.style.left = `${liRect.left - ulRect.left}px`;
   }
 
-  // ===== Active link =====
   function updateActiveLink() {
     let current = "hero";
 
@@ -103,18 +104,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   window.addEventListener("scroll", updateActiveLink, { passive: true });
+  window.addEventListener("resize", updateActiveLink);
   window.addEventListener("load", updateActiveLink);
 
-  setTimeout(updateActiveLink, 50);
-  setTimeout(updateActiveLink, 250);
+  setTimeout(updateActiveLink, 60);
+  setTimeout(updateActiveLink, 240);
   updateActiveLink();
 
-  // ===== Rotating text =====
+  // ===== Rotating hero words =====
   const rotators = document.querySelectorAll(".rotator[data-words]");
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   rotators.forEach((el) => {
     let words;
+
     try {
       words = JSON.parse(el.getAttribute("data-words") || "[]");
     } catch {
@@ -132,9 +134,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.font = font;
 
     let maxW = 0;
-    for (const w of words) {
-      maxW = Math.max(maxW, ctx.measureText(w).width);
-    }
+    words.forEach((word) => {
+      maxW = Math.max(maxW, ctx.measureText(word).width);
+    });
 
     el.style.setProperty("--rotator-w", `${Math.ceil(maxW) + 8}px`);
 
@@ -161,29 +163,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setInterval(change, 2000);
   });
-});
 
-(() => {
-  const el = document.querySelector(".ai-rotate");
-  if (!el) return;
+  // ===== Mockup title rotate =====
+  const aiRotate = document.querySelector(".ai-rotate");
+  if (aiRotate) {
+    const words = ["AI Mentor", "Smart Workroom", "Resume Analyzer", "Progress Tracker"];
+    let i = 0;
 
-  const words = ["AI Mentor", "Smart Workroom", "Resume Analyzer", "Progress Tracker"];
-  let i = 0;
+    setInterval(() => {
+      aiRotate.classList.add("is-fade");
 
-  setInterval(() => {
-    el.classList.add("is-fade");
-    setTimeout(() => {
-      i = (i + 1) % words.length;
-      el.textContent = words[i];
-      el.classList.remove("is-fade");
-    }, 180);
-  }, 2400);
-})();
+      setTimeout(() => {
+        i = (i + 1) % words.length;
+        aiRotate.textContent = words[i];
+        aiRotate.classList.remove("is-fade");
+      }, 180);
+    }, 2400);
+  }
 
-document.addEventListener("DOMContentLoaded", () => {
+  // ===== AI insight strip =====
   document.querySelectorAll(".ai-dyn[data-words]").forEach((el) => {
     const raw = el.getAttribute("data-words") || "";
-    const items = raw.split("|").map((s) => s.trim()).filter(Boolean);
+    const items = raw
+      .split("|")
+      .map((s) => s.trim())
+      .filter(Boolean);
+
     if (!items.length) return;
 
     let i = 0;
