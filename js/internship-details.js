@@ -85,23 +85,20 @@ async function loadInternship() {
   if (miniValues[0]) miniValues[0].textContent = title;
   if (miniValues[1]) miniValues[1].textContent = type;
 
-  // ---- optional skills ----
-  const acc = $(".info-accordion");
-  if (acc) {
-    const skillsHTML = skills.length
-      ? `
-        <h4 class="h4">Skills</h4>
-        <ul class="bullets">
-          ${skills.map((s) => `<li>${escapeHTML(s)}</li>`).join("")}
-        </ul>
-      `
-      : "";
+// ---- optional skills ----
+const aboutYouList = document.querySelectorAll(".bullets")[1];
 
-    acc.innerHTML = skillsHTML;
-  }
-
-  const brand = $(".brand");
-  if (brand) brand.setAttribute("href", "internshipdetails.html");
+if (aboutYouList && skills.length) {
+  aboutYouList.insertAdjacentHTML(
+    "afterend",
+    `
+      <h4 class="h4">Skills</h4>
+      <ul class="bullets">
+        ${skills.map((s) => `<li>${escapeHTML(s)}</li>`).join("")}
+      </ul>
+    `
+  );
+}
 }
 
 // ---- tabs ----
